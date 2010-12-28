@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>part detail: {{ part.manufacturer }} {{ part.part_num }}</title>
+    </head>
+    
+    <body>
+        <h2>{{ part.manufacturer }} {{ part.part_num }}</h2>
+        
+        <p>description: {{ part.description }}</p>
+        
+        <p>value: {{ part.value }}</p>
+        
+        <p>
+            Distributors:
+            <ul>
+                {% for dist_part in part.distributorpart_set.all %}
+                    <li>{{ dist_part.distributor.name }} — {{ dist_part.dist_part_num }}</li>
+                {% endfor %}
+            </ul>
+        </p>
+        
+        <p>
+            Orders:
+            <ul>
+                {% for order in orders %}
+                    <li><a href="/parts/order/{{ order.id }}">{{ order.distributor.name }} {{ order.order_num }}</a>, {{ order.order_date }}</li>
+                {% endfor %}
+            </ul>
+        </p>
+    </body>
+</html>

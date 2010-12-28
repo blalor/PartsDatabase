@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>all parts</title>
+    </head>
+        {% if part_list %}
+            <table>
+                <tbody>
+                    <tr>
+                        <th>manufacturer</th>
+                        <th>part number</th>
+                        <th>description</th>
+                        <th>value</th>
+                    </tr>
+                    {% for part in part_list %}
+                        <tr>
+                            <td>{{ part.manufacturer }}</td>
+                            <td><a href="/parts/part/{{ part.id }}/">{{ part.part_num }}</a></td>
+                            <td>{{ part.description }}</td>
+                            <td>{{ part.value }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No parts are available.</p>
+        {% endif %}
+    </body>
+</html>

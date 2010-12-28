@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>all orders</title>
+    </head>
+        {% if order_list %}
+            <table>
+                <tbody>
+                    <tr>
+                        <th>distributor</th>
+                        <th>order number</th>
+                        <th>order date</th>
+                    </tr>
+                    {% for order in order_list %}
+                        <tr>
+                            <td>{{ order.distributor.name }}</td>
+                            <td><a href="/parts/order/{{ order.id }}/">{{ order.order_num }}</a></td>
+                            <td>{{ order.order_date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No orders are available.</p>
+        {% endif %}
+    </body>
+</html>
