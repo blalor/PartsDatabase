@@ -1,6 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
     
+{% load distributor_tools %}
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -26,7 +28,7 @@
                     <tr>
                         <td>{{ line_item.distributor_part.part.manufacturer }}</td>
                         <td><a href="/parts/part/{{ line_item.distributor_part.part.id }}/">{{ line_item.distributor_part.part.part_num }}</td>
-                        <td>{{ line_item.distributor_part.dist_part_num }}</td>
+                        <td><a href="{{ line_item.distributor_part|link_for_part }}">{{ line_item.distributor_part.dist_part_num }}</a></td>
                         <td>{{ line_item.quantity }}</td>
                         <td>{{ line_item.distributor_part.part.description }}</td>
                         <td>{{ line_item.distributor_part.part.value }}</td>
